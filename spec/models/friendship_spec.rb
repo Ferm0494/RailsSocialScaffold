@@ -16,4 +16,8 @@ RSpec.describe Friendship, type: :model do
       expect(friendship).not_to be_valid
     end
   end
+  context 'Assocs for Friendship' do
+    it { should belong_to(:sender) }
+    it { should belong_to(:receiver) }
+  end
 end
