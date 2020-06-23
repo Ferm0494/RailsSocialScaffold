@@ -1,6 +1,6 @@
 require 'rails_helper'
 RSpec.describe Comment, type: :model do
-     # rubocop:disable Layout/LineLength
+    # rubocop:disable Layout/LineLength
   context 'Validations for comment' do
     let(:user) { User.new(email: 'testing@testing.com', name: 'testing', password: 'foobar') }
     let(:post) { Post.new(content: 'Content for post') }
@@ -39,9 +39,9 @@ RSpec.describe Comment, type: :model do
       expect(comment).not_to be_valid
     end
   end
+  # rubocop:enable Layout/LineLength
   context 'Assocs for Comments' do
     it { should belong_to(:user) }
     it { should belong_to(:post) }
   end
 end
-  # rubocop:enable Layout/LineLength
