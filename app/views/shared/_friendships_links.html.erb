@@ -1,0 +1,13 @@
+ <% request = friendship_invitation_exists(user)%>
+ <% if request  %>
+        <%if request.sender.eql? current_user %>
+        <%= link_to  "Cancel invitation", "#" %>
+        <%else%>
+         <%= link_to  "Accept invitation", "#" %>
+
+        <%end%>
+    <%elsif friends?(user) %>
+            <%= link_to  "Delete friend","#" %>
+    <%else%>
+            <%= link_to "Add as friend","#" %>
+ <%end%>
