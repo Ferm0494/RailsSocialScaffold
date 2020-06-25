@@ -25,7 +25,7 @@ class User < ApplicationRecord
                      },
            class_name: 'Friendship'
 
-  def get_friends
+  def my_friends
     users = []
     friends.each do |friendship|
       users << friendship.sender unless users.include?(friendship.sender)

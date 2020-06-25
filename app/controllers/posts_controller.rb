@@ -20,7 +20,7 @@ class PostsController < ApplicationController
   private
 
   def timeline_posts
-    @users = current_user.get_friends
+    @users = current_user.my_friends
     @users << current_user if @users.empty?
     @timeline_posts ||= Post.where(user_id: [@users]).ordered_by_most_recent
   end
