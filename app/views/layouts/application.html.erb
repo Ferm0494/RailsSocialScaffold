@@ -2,15 +2,14 @@
 <html>
   <head>
     <title>RorSocialScaffold</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+   <%= render 'layouts/config' %>
   </head>
   <body>
-    <nav class="nav">
-      <%= link_to 'Stay in touch', root_path %>
+    <nav class="nav p-3">
       <div class="menu">
+       <div class="menu-item">
+          <%= link_to 'Stay in touch', root_path %>
+        </div>
         <div class="menu-item">
           <%= menu_link_to 'Timeline', posts_path %>
         </div>
@@ -18,11 +17,14 @@
           <%= menu_link_to 'All users', users_path %>
         </div>
       </div>
+      <div class = "w-25 d-flex justify-content-around">
       <% if current_user %>
+      <%= link_to  " Requests", friendships_path %>
         <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
       <% else %>
         <%= link_to 'Sign in', user_session_path %>
       <% end %>
+      </div>
     </nav>
     <% if notice.present? %>
       <div class="notice">

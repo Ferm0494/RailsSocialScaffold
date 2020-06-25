@@ -15,4 +15,22 @@ module ApplicationHelper
       link_to('Like!', post_likes_path(post_id: post.id), method: :post)
     end
   end
+
+  def friendship_invitation_exists(user)
+    res = false
+    current_user.friendships_requests.each do |request|
+      res = request if request.sender.eql? user or request.receiver.eql? user
+    end
+    puts " This is the value for res #{res}"
+    res
+  end
+
+  def friends(user)
+    res = false
+    current_user.friends.each do |request|
+      res = request if request.sender.eql? user or request.receiver.eql? user
+    end
+    puts " This is the value for res friends #{res}"
+    res
+  end
 end
