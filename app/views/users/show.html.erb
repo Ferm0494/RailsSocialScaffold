@@ -1,5 +1,10 @@
+
+
+
 <section class="user-section">
   <h2><%= "Name: #{@user.name}" %></h2>
+  <%= render 'shared/friendships_links', user: @user %>
+  <% if friends(@user) %>
   <article class="timeline">
     <h3>Recent posts:</h3>
     <ul class="posts">
@@ -7,3 +12,6 @@
     </ul>
   </article>
 </section>
+<%else%>
+<h5>Send an invitation to connect</h5>
+<%end%>

@@ -2,14 +2,16 @@
   <ul class="users-list">
     <% @users.each do |user| %>
     <% if !current_user.eql? user%>
-      <li>
-        Name: <%= user.name %>
-        <span class="profile-link">
-          <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
-         <%= render 'shared/friendships_links',user: user  %>
-        </span>
-        
-      </li>
+
+      <div class="card w-50 shadow-lg my-4">
+     <div class="card-body">
+    <h5 class="card-title"> Name: <%= user.name%></h5>
+    <%= link_to 'See Profile',  user_path(user), class: ' btn btn-primary' %>
+     <%= render 'shared/friendships_links',user: user  %>
+  
+  </div>
+  </div>
+
       <%end%>
     <% end %>
   </ul>

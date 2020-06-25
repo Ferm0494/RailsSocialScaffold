@@ -38,12 +38,11 @@ a {
 .nav {
   display: flex;
   justify-content: space-between;
-  padding: 16px 48px;
   background-color: $primary-color-dark;
   color: $primary-color-light;
 
   .menu {
-    width: 80%;
+    width: 75%;
     justify-content: space-between;
 
     .menu-item {
