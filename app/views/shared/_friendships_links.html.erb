@@ -1,7 +1,7 @@
  <% request = friendship_invitation_exists(user)%>
  <%friends = friends(user)%>
  <% if request  %>
-        <%if request.sender.eql? current_user %>
+        <%if request.receiver.eql? current_user %>
         <%= link_to  "Cancel invitation", friendship_path(request), method: :delete,  class: "btn btn-danger" %>
         <%else%>
          <%= link_to  "Accept invitation", friendship_path(request), method: :put, class: "btn btn-success"  %>
