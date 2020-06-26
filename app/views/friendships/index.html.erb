@@ -3,8 +3,6 @@
 
 <% if !@friendships_requests.empty?%>
 <% @friendships_requests.each do |request|%>
-<% if request.id.odd?%>
-<% @count = true%>
 <div class="card w-50">
   <div class="card-body">
     <h5 class="card-title"><%= request.sender.name %></h5>
@@ -16,12 +14,14 @@
 
 <%end%>
 
-<%end%>
-<%end%>
-
-<% if !@count %>
+<%else%>
 
 <h2>You dont have friendship requests! </h2>
 
 <%end%>
+
+
+
+
+
 
