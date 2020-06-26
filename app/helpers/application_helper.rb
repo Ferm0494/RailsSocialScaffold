@@ -23,13 +23,14 @@ module ApplicationHelper
     end
     puts " This is the value for res #{res}"
     return false if res.empty?
+
     res[0]
   end
 
   def friends(user)
     res = false
     current_user.friends.each do |request|
-    res = request if request.sender.eql? user or request.receiver.eql? user
+      res = request if request.sender.eql? user or request.receiver.eql? user
     end
     puts " This is the value for res friends #{res}"
     res

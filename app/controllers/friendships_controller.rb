@@ -1,22 +1,25 @@
 class FriendshipsController < ApplicationController
-  before_action :getting_params, only: [:destroy, :update]
-  
+  before_action :getting_params, only: %i[destroy update]
 
-  def getting_params 
+  def getting_params
     friendship = Friendship.find(params[:id])
     @user1 = friendship.sender
-    @user2 = friendship.receiver  
+    @user2 = friendship.receiver
   end
 
   def create
     receiver = User.find(params[:id])
-    friendship_sender, friendship_receiver = Friendship.new, Friendship.new
-    friendship_receiver.sender,friendship_sender.sender = receiver ,current_user
-    friendship_receiver.receiver,friendship_sender.receiver = current_user, receiver 
-    friendship_receiver.status, friendship_sender.status = 'Pending', 'Pending'
+    friendship_sender = Friendship.new
+    friendship_receiver = Friendship.new
+    friendship_receiver.sender = receiver
+    friendship_sender.sender = current_user
+    friendship_receiver.receiver = current_user
+    friendship_sender.receiver = receiver
+    friendship_receiver.status = 'Pending'
+    friendship_sender.status = 'Pending'
     friendship_sender.save
-    friendship_receiver.save 
-     redirect_to root_path
+    friendship_receiver.save
+    redirect_to root_path
   end
 
   def index
@@ -26,19 +29,23 @@ class FriendshipsController < ApplicationController
   end
 
   def destroy
-    Friendship.where("(user_id= :id1 AND other_user_id= :id2 ) OR (user_id = :id2 AND other_user_id = :id1)",id1: @user1.id, id2: @user2.id).each{
-      |f|
+    Friendship.where('(user_id= :id1 AND
+    other_user_id= :id2 ) OR
+    (user_id = :id2 AND other_user_id = :id1)',
+                     id1: @user1.id, id2: @user2.id).each do |f|
       Friendship.destroy(f.id)
-    }
+    end
     redirect_to root_path
   end
 
   def update
-    
-    Friendship.where("(user_id= :id1 AND other_user_id= :id2 ) OR (user_id = :id2 AND other_user_id = :id1)",id1: @user1.id, id2: @user2.id).each{
-      |f|
-      Friendship.update(f.id, status: "Active")
-    }
-     redirect_to root_path
+    Friendship.where('(user_id= :id1 AND
+    other_user_id= :id2 ) OR
+     (user_id = :id2 AND
+      other_user_id = :id1)',
+                     id1: @user1.id, id2: @user2.id).each do |f|
+      Friendship.update(f.id, status: 'Active')
+    end
+    redirect_to root_path
   end
 end

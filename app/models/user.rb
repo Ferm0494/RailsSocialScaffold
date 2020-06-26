@@ -12,7 +12,9 @@ class User < ApplicationRecord
   has_many :friendships_requests, lambda { |user|
                                     unscope(where: :user_id)
                                       .where("status = 'Pending'")
-                                      .where('(friendships.other_user_id = :user_id OR friendships.user_id = :user_id) AND friendships.id % 2 = 1',
+                                      .where('(friendships.other_user_id = :user_id OR
+                                      friendships.user_id = :user_id) AND
+                                       friendships.id % 2 = 1',
                                              user_id: user.id)
                                   },
            class_name: 'Friendship'
