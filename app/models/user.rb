@@ -12,7 +12,7 @@ class User < ApplicationRecord
   has_many :friendships_requests, lambda { |user|
                                     unscope(where: :user_id)
                                       .where("status = 'Pending'")
-                                      .where('friendships.user_id = :user_id ',
+                                      .where('friendships.user_id = :user_id OR friendships.other_user_id = :user_id ',
                                              user_id: user.id)
                                   },
            class_name: 'Friendship'
@@ -20,7 +20,7 @@ class User < ApplicationRecord
   has_many :friends, lambda { |user|
                        unscope(where: :user_id)
                          .where("status = 'Active'")
-                         .where('friendships.user_id = :user_id ',
+                         .where('friendships.user_id = :user_id OR friendships.other_user_id = :user_id ',
                                 user_id: user.id)
                      },
            class_name: 'Friendship'

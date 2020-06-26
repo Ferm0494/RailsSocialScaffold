@@ -20,7 +20,9 @@ class FriendshipsController < ApplicationController
   end
 
   def index
+    @count = false
     @friendships_requests = current_user.friendships_requests
+    @friendships_requests = @friendships_requests.where(other_user_id: current_user.id)
   end
 
   def destroy
@@ -32,7 +34,7 @@ class FriendshipsController < ApplicationController
   end
 
   def update
-     
+    
     Friendship.where("(user_id= :id1 AND other_user_id= :id2 ) OR (user_id = :id2 AND other_user_id = :id1)",id1: @user1.id, id2: @user2.id).each{
       |f|
       Friendship.update(f.id, status: "Active")

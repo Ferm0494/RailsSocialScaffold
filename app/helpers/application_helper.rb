@@ -17,12 +17,13 @@ module ApplicationHelper
   end
 
   def friendship_invitation_exists(user)
-    res = false
+    res = []
     current_user.friendships_requests.each do |request|
-      res = request if request.sender.eql? user or request.receiver.eql? user
+      res << request if request.sender.eql? user or request.receiver.eql? user
     end
     puts " This is the value for res #{res}"
-    res
+    return false if res.empty?
+    res[0]
   end
 
   def friends(user)

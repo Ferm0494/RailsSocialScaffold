@@ -3,10 +3,11 @@
 
 <% if !@friendships_requests.empty?%>
 <% @friendships_requests.each do |request|%>
-
+<% if request.id.odd?%>
+<% @count = true%>
 <div class="card w-50">
   <div class="card-body">
-    <h5 class="card-title"><%= request.receiver.name %></h5>
+    <h5 class="card-title"><%= request.sender.name %></h5>
     <p class="card-text">Wants to be your friend</p>
    <%=link_to "Accept", friendship_path(request), method: :put, class: "btn btn-secondary"  %>
    <%=link_to "Decline",friendship_path(request), method: :delete, class: "btn btn-secondary"  %>
@@ -15,6 +16,12 @@
 
 <%end%>
 
-<%else%>
-<h2>You dont have friendship requests!</h2>
 <%end%>
+<%end%>
+
+<% if !@count %>
+
+<h2>You dont have friendship requests! </h2>
+
+<%end%>
+
