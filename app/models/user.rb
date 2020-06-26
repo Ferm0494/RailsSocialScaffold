@@ -17,7 +17,7 @@ class User < ApplicationRecord
                                        friendships.id % 2 = 1',
                                              user_id: user.id)
                                   },
-           class_name: 'Friendship'
+           class_name: 'Friendship',dependent: :destroy
 
   has_many :friends, lambda { |user|
                        unscope(where: :user_id)
@@ -25,7 +25,7 @@ class User < ApplicationRecord
                          .where('friendships.user_id = :user_id  ',
                                 user_id: user.id)
                      },
-           class_name: 'Friendship'
+           class_name: 'Friendship', dependent: :destroy
 
   def my_friends
     users = []
