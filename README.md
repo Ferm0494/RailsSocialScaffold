@@ -4,7 +4,7 @@
 ![screenshot](./app/assets/images/1.png)
 ![screenshot](./app/assets/images/2.png)
 ![screenshot](./app/assets/images/3.png)
-![screenshot](./app/assets/images/3.png)
+![screenshot](./app/assets/images/4.png)
 
 ## Built With
 
