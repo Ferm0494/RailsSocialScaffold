@@ -1,6 +1,10 @@
 # Scaffold for social media app with Ruby on Rails
 
-> This repo includes intial code for social media app with basic styling. Its purpose is to be a starting point for Microverse students.
+> Social media stay in touch
+![screenshot](./app/assets/images/1.png)
+![screenshot](./app/assets/images/2.png)
+![screenshot](./app/assets/images/3.png)
+![screenshot](./app/assets/images/4.png)
 
 ## Built With
 
@@ -9,7 +13,7 @@
 
 ## Live Demo
 
-TBA
+https://stayintouchferm0494.herokuapp.com
 
 
 ## Getting Started
@@ -55,16 +59,17 @@ Open `http://localhost:3000/` in your browser.
     rpsec --format documentation
 ```
 
-> Tests will be added by Microverse students. There are no tests for initial features in order to make sure that students write all tests from scratch.
-
 ### Deployment
 
 TBA
 
 ## Authors
 
-TBA
+👤 **Fernando**
 
+- Github: [@Ferm0494](https://github.com/Ferm0494)
+- Twitter: [@ferm494](https://twitter.com/ferm494)
+- Linkedin: [@Ferm0494](https://www.linkedin.com/in/ferm0494/)
 ## 🤝 Contributing
 
 Contributions, issues and feature requests are welcome!
